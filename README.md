@@ -1,4 +1,5 @@
 Task Master
+
 A task management web app
 
 This is a simple task management web app built with HTML, CSS, JavaScript and Firebase. It allows you to create, manage and track your tasks efficiently.
