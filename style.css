@@ -1,1 +1,15 @@
+/* Basic styling - customise as needed */
+body {
+    font-family: sans-serif;
+}
 
+#task-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.task {
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
