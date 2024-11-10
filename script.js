@@ -50,3 +50,41 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+// ... (previous code)
+
+// Add a task
+addTaskButton.addEventListener('click', () => {
+    // ... (get task data as before)
+
+    db.collection('tasks').add({
+        name: taskName,
+        dueDate: dueDate,
+        priority: priority,
+        completed: false
+    })
+    .then(() => {
+        // Clear input fields and re-render tasks
+        taskNameInput.value = '';
+        dueDateInput.value = '';
+        renderTasks();
+    })
+    .catch(error => console.error("Error adding document: ", error));
+});
+
+// Get all tasks
+function renderTasks() {
+    taskList.innerHTML = ''; // Clear existing tasks
+
+    db.collection("tasks").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const task = doc.data();
+            // ... (create taskElement as before, using task data)
+            taskList.appendChild(taskElement);
+        });
+    });
+}
+
+// (Add functions to update and delete tasks similarly)
+
+// Initial rendering of tasks
+renderTasks();
